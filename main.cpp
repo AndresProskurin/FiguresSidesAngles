@@ -9,6 +9,8 @@ class Shape {
         int sideCount() {
             return sideCnt;
         }
+        
+        virtual void printInfo() {}
     };
 
 
@@ -51,6 +53,11 @@ class Triangle : public Shape {
         }
         int get_C() {
             return C;
+        }
+
+        void printInfo() override{
+            std::cout << "Стороны: a=" << a << ", b=" << b << ", c=" << c << std::endl;
+            std::cout << "Углы: A=" << A << ", B=" << B << ", C=" << C << std::endl;
         }
 
 };
@@ -105,6 +112,11 @@ class Quadrangle : public Shape {
         int get_D() {
             return D;
         }
+
+        void printInfo() override{
+            std::cout << "Стороны: a=" << a << ", b=" << b << ", c=" << c << ", d=" << d << std::endl;
+            std::cout << "Углы: A=" << A << ", B=" << B << ", C=" << C << ", D=" << D << std::endl;
+        }
 };
 
 class RightTriangle : public Triangle {
@@ -142,16 +154,9 @@ class Square : public Rhombus {
         Square(int a) : Rhombus(a, 90, 90) {}
 };
 
-void printInfo(Triangle* s) {
-    std::cout << "Стороны: a=" << s->get_a() << ", b=" << s->get_b() << ", c=" << s->get_c() << std::endl;
-    std::cout << "Углы: A=" << s->get_A() << ", B=" << s->get_B() << ", C=" << s->get_C() << std::endl;
+void printInfo(Shape* s) {
+    s->printInfo();
 }
-
-void printInfo (Quadrangle* s) {
-    std::cout << "Стороны: a=" << s->get_a() << ", b=" << s->get_b() << ", c=" << s->get_c() << ", d=" << s->get_d() << std::endl;
-    std::cout << "Углы: A=" << s->get_A() << ", B=" << s->get_B() << ", C=" << s->get_C() << ", D=" << s->get_D() << std::endl;
-}
-
 int main() {
     
     Triangle triangle(10, 20, 30, 50, 60, 70);
